@@ -1,0 +1,61 @@
+@import "https://unpkg.com/open-props" layer(base);
+@import "https://unpkg.com/open-props/normalize.min.css" layer(base);
+
+@layer demo {
+  h1 {
+    --color: CanvasText;
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0) 7ch,
+      var(--color) 8ch,
+      var(--color) 22ch,
+      rgba(0, 0, 0, 0) 23ch
+    );
+    background-size: 70ch;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: reveal 2s ease-out infinite;
+    animation: reveal 2s ease-out infinite;
+  }
+
+  .bright {
+    --color: deeppink;
+    -webkit-animation-delay: 100ms;
+    animation-delay: 100ms;
+  }
+}
+
+@-webkit-keyframes reveal {
+  to {
+    background-position-x: 70ch;
+  }
+}
+
+@keyframes reveal {
+  to {
+    background-position-x: 70ch;
+  }
+}
+
+@layer demo.support {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  html {
+    height: 100%;
+  }
+
+  body {
+    min-height: 100%;
+    font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell,
+      Noto Sans, sans-serif;
+
+    display: grid;
+    align-content: center;
+    justify-content: center;
+    place-content: center;
+    text-align: center;
+  }
+}
